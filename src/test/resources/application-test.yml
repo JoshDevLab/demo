@@ -6,26 +6,22 @@ spring:
       username: testuser
       password: testpass
       pool-name: core-db-pool
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 10000
-      max-lifetime: 30000
-      connection-timeout: 20000
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: validate # 스키마 유효성 검사
     properties:
       hibernate:
-        format_sql: true
-        show_sql: true
+        format_sql: true  # SQL 포맷팅 활성화
+        show_sql: true    # SQL 출력 활성화
 
   flyway:
-    enabled: true
-    baseline-on-migrate: true
-    clean-disabled: false # Flyway clean 활성화
-    locations: classpath:db/migration
+    enabled: true           # Flyway 활성화
+    baseline-on-migrate: true # 기본 버전 설정
+    clean-disabled: false   # Flyway clean 활성화
+    locations: classpath:db/migration # 마이그레이션 경로
 
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: localhost       # Redis 호스트
+      port: 6379            # Redis 포트

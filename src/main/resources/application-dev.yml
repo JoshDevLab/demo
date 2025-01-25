@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://dev-server:3306/devdb?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+      username: devuser
+      password: devpass
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 10000
+      max-lifetime: 60000
+      connection-timeout: 30000
+
+  jpa:
+    show-sql: false # SQL 출력 비활성화
