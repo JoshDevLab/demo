@@ -8,6 +8,7 @@ import com.example.demo.domain.ExampleService;
 import com.example.demo.support.response.ApiResponse;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 public class ExampleController {
 
@@ -18,7 +19,8 @@ public class ExampleController {
     }
 
     @GetMapping("/get/{exampleValue}")
-    public ApiResponse<ExampleResponseDto> exampleGet(@PathVariable String exampleValue, @RequestParam String exampleParam) {
+    public ApiResponse<ExampleResponseDto> exampleGet(@PathVariable(name = "exampleValue") String exampleValue,
+                                                      @RequestParam(name = "exampleParam") String exampleParam) {
         ExampleResult result = exampleExampleService.processExample(new ExampleData(exampleValue, exampleParam));
         return ApiResponse.success(new ExampleResponseDto(result.data()));
     }
