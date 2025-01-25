@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: local_mysql
+    ports:
+      - "3306:3306" # 로컬 포트 3306 -> 컨테이너 포트 3306 매핑
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpass
+    volumes:
+      - mysql_data:/var/lib/mysql # MySQL 데이터 유지
+
+  redis:
+    image: redis:7.0
+    container_name: local_redis
+    ports:
+      - "6379:6379" # 로컬 포트 6379 -> 컨테이너 포트 6379 매핑
+    command: ["redis-server", "--appendonly", "yes"] # 데이터 영구 저장 설정
+
+volumes:
+  mysql_data:
