@@ -21,8 +21,8 @@
       <file>logs/dev/app.%d{yyyy-MM-dd}.log</file>
       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
         <fileNamePattern>logs/dev/app.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-        <maxHistory>30</maxHistory> <!-- 30일치 로그 보관 -->
-        <cleanHistoryOnStart>true</cleanHistoryOnStart> <!-- 오래된 로그 정리 -->
+        <maxHistory>30</maxHistory>
+        <cleanHistoryOnStart>true</cleanHistoryOnStart>
       </rollingPolicy>
       <encoder>
         <pattern>${LOG_PATTERN}</pattern>
@@ -41,9 +41,12 @@
       </encoder>
     </appender>
 
+    <logger name="ERROR_LOGGER" level="ERROR" additivity="false">
+      <appender-ref ref="DEV_ERROR_FILE" />
+    </logger>
+
     <root level="INFO">
       <appender-ref ref="DEV_FILE" />
-      <appender-ref ref="DEV_ERROR_FILE" />
     </root>
   </springProfile>
 
@@ -53,8 +56,8 @@
       <file>logs/prod/app.%d{yyyy-MM-dd}.log</file>
       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
         <fileNamePattern>logs/prod/app.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-        <maxHistory>90</maxHistory> <!-- 90일치 로그 보관 -->
-        <cleanHistoryOnStart>true</cleanHistoryOnStart> <!-- 오래된 로그 정리 -->
+        <maxHistory>90</maxHistory>
+        <cleanHistoryOnStart>true</cleanHistoryOnStart>
       </rollingPolicy>
       <encoder>
         <pattern>${LOG_PATTERN}</pattern>
@@ -73,9 +76,12 @@
       </encoder>
     </appender>
 
+    <logger name="ERROR_LOGGER" level="ERROR" additivity="false">
+      <appender-ref ref="PROD_ERROR_FILE" />
+    </logger>
+
     <root level="INFO">
       <appender-ref ref="PROD_FILE" />
-      <appender-ref ref="PROD_ERROR_FILE" />
     </root>
   </springProfile>
 </configuration>
