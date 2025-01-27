@@ -2,7 +2,7 @@ spring:
   application:
     name: template # 애플리케이션 이름
   profiles:
-    default: local # 기본 활성 프로파일 설정
+    active: local
 
   datasource:
     hikari:
@@ -19,7 +19,7 @@ spring:
         jdbc.time_zone: UTC
 
 logging:
-  config: classpath:logback/logback-spring.xml
+  config: classpath:logback/logback-${spring.profiles.active}.xml
 
 ---
 
