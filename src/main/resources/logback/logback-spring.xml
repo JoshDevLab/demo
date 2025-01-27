@@ -1,0 +1,7 @@
+<configuration>
+  <!-- 공통 패턴 설정 -->
+  <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" />
+
+  <!-- 환경별 설정 파일 포함 -->
+  <include resource="logback/logback-${spring.profiles.active}.xml" />
+</configuration>

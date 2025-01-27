@@ -18,6 +18,9 @@ spring:
         timezone.default_storage: NORMALIZE_UTC
         jdbc.time_zone: UTC
 
+logging:
+  config: classpath:logback/logback-spring.xml
+
 ---
 
 spring:
@@ -56,9 +59,6 @@ spring:
       jdbc-url: jdbc:mysql://localhost:3306/testdb?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
       username: testuser
       password: testpass
-      maximum-pool-size: 10
-      minimum-idle: 2
-      connection-timeout: 30000
 
   data:
     redis:
@@ -87,9 +87,6 @@ spring:
       jdbc-url: jdbc:mysql://prod-database-host:3306/proddb?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
       username: produser
       password: prodpass
-      maximum-pool-size: 20
-      minimum-idle: 5
-      connection-timeout: 5000
 
   data:
     redis:
