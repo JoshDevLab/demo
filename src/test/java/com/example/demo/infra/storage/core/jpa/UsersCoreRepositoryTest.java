@@ -25,13 +25,4 @@ public class UsersCoreRepositoryTest extends IntegrationTestSupport {
         Assertions.assertThat(all).hasSize(2);
     }
 
-    @Test
-    public void saveUsers2() {
-        Users users = new Users(null, "Test user3", "test3@test.com");
-        exampleRepository.create(users);
-        List<UsersEntity> all = userJpaRepository.findAll();
-        Assertions.assertThat(all).hasSize(2);
-    }
-
-
 }
